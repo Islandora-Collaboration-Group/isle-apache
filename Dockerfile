@@ -217,10 +217,6 @@ RUN useradd --comment 'Islandora User' --no-create-home -d /var/www/html --syste
     unzip fits-$FITS_VERSION.zip -d fits-$FITS_VERSION && \
     mv fits-$FITS_VERSION /usr/local/fits && \
     ln -s /usr/local/fits/fits.sh /usr/local/bin/fits && \
-    mkdir -p /var/log/fits && \
-    chgrp www-data /var/log/fits && \
-    chmod 775 /var/log/fits && \
-    sed -i 's#log4j.appender.FILE.File = .*#log4j.appender.FILE.File = /var/log/fits/fits.log#' /usr/local/fits/log4j.properties && \
     ## BUILD TOOLS
     mkdir /utility-scripts && \
     cd /utility-scripts && \
