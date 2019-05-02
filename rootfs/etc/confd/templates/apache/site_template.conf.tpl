@@ -2,7 +2,7 @@
 	# ServerName {{getv "/base/domain"}}
 	DocumentRoot /var/www/html
     Errorlog /dev/stderr
-	CustomLog /dev/stdout
+	CustomLog /dev/stdout combined
 
 	<Directory /var/www/html/>
 		Require all granted
