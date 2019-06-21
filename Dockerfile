@@ -161,7 +161,7 @@ RUN BUILD_DEPS="build-essential \
     apt-get install -y --no-install-recommends $IMAGEMAGICK_LIBS && \
     ## Adore-Djatoka
     cd /tmp && \
-    ## Kakadu libraries from adore-djatoka. (Is this even necessary anymore?)
+    ## Kakadu libraries from adore-djatoka for JP2 derivatives.
     curl -LO http://downloads.sourceforge.net/project/djatoka/djatoka/1.1/adore-djatoka-1.1.tar.gz && \
     tar -xzf adore-djatoka-1.1.tar.gz -C /usr/local && \
     ln -s /usr/local/adore-djatoka-1.1/bin/Linux-x86-64/kdu_compress /usr/local/bin/kdu_compress && \
