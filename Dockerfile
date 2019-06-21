@@ -4,7 +4,7 @@ ENV INITRD=no \
     ISLANDORA_UID=${ISLANDORA_UID:-1000} \
     ENABLE_XDEBUG=${ENABLE_XDEBUG:-false} \
     PULL_ISLE_BUILD_TOOLS=${PULL_ISLE_BUILD_TOOLS:-true} \
-    ISLE_BUILD_TOOLS_REPO=${ISLE_BUILD_TOOLS_REPO:-https://github.com/Islandora-Collaboration-Group/isle_drupal_build_tools.git} \
+    ISLE_BUILD_TOOLS_REPO=${ISLE_BUILD_TOOLS_REPO:-https://github.com/Born-Digital-US/ISLE-Drupal-Build-Tools.git} \
     ISLE_BUILD_TOOLS_BRANCH=${ISLE_BUILD_TOOLS_BRANCH:-master}
     ## @TODO: add GH creds to container for private repo pulls.
 
@@ -238,7 +238,7 @@ RUN useradd --comment 'Islandora User' --no-create-home -d /var/www/html --syste
     ## BUILD TOOLS
     mkdir /utility-scripts && \
     cd /utility-scripts && \
-    git clone $ISLE_BUILD_TOOLS_REPO -b $ISLE_BUILD_TOOLS_BRANCH && \
+    git clone $ISLE_BUILD_TOOLS_REPO -b $ISLE_BUILD_TOOLS_BRANCH isle_drupal_build_tools && \
     ## Disable Default
     a2dissite 000-default && \
     a2enmod rewrite deflate headers expires proxy proxy_http proxy_html proxy_connect remoteip xml2enc && \
