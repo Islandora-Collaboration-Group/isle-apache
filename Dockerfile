@@ -39,7 +39,7 @@ RUN GEN_DEP_PACKS="software-properties-common \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ## S6-Overlay @see: https://github.com/just-containers/s6-overlay
-ENV S6_OVERLAY_VERSION=${S6_OVERLAY_VERSION:-1.21.7.0}
+ENV S6_OVERLAY_VERSION=${S6_OVERLAY_VERSION:-1.22.1.0}
 ADD https://github.com/just-containers/s6-overlay/releases/download/v$S6_OVERLAY_VERSION/s6-overlay-amd64.tar.gz /tmp/
 RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
     rm /tmp/s6-overlay-amd64.tar.gz
@@ -61,7 +61,7 @@ ENV PATH=$PATH:$HOME/.composer/vendor/bin \
     COMPOSER_ALLOW_SUPERUSER=1
 
 ## Apache, PHP, FFMPEG, and other Islandora Depends.
-## Apache && PHP 5.6 from ondrej PPA
+## Apache && PHP 7.1 from ondrej PPA
 ## Per @g7morris, ghostscript from repo is OK.
 RUN add-apt-repository -y ppa:ondrej/apache2 && \
     add-apt-repository -y ppa:ondrej/php && \
@@ -75,28 +75,28 @@ RUN add-apt-repository -y ppa:ondrej/apache2 && \
     APACHE_PACKS="apache2 \
     python-mysqldb \
     libxml2-dev \
-    libapache2-mod-php5.6 \
+    libapache2-mod-php7.1 \
     libcurl3-openssl-dev \
-    php5.6 \
-    php5.6-cli \
-    php5.6-json \
-    php5.6-common \
-    php5.6-readline \
+    php7.1 \
+    php7.1-cli \
+    php7.1-json \
+    php7.1-common \
+    php7.1-readline \
     php-pear \
-    php5.6-curl \
-    php5.6-mbstring \
-    php5.6-xmlrpc \
-    php5.6-dev \
-    php5.6-gd \
-    php5.6-ldap \
-    php5.6-xml \
-    php5.6-mcrypt \
-    php5.6-mysql \
-    php5.6-soap \
-    php5.6-xsl \
-    php5.6-zip \
-    php5.6-bcmath \
-    php5.6-intl \
+    php7.1-curl \
+    php7.1-mbstring \
+    php7.1-xmlrpc \
+    php7.1-dev \
+    php7.1-gd \
+    php7.1-ldap \
+    php7.1-xml \
+    php7.1-mcrypt \
+    php7.1-mysql \
+    php7.1-soap \
+    php7.1-xsl \
+    php7.1-zip \
+    php7.1-bcmath \
+    php7.1-intl \
     php-uploadprogress \
     php-xdebug \
     bibutils \
@@ -118,11 +118,11 @@ RUN add-apt-repository -y ppa:ondrej/apache2 && \
     ## PHP conf  
     phpdismod xdebug && \
     ## memory_limit = -1?
-    sed -i 's/memory_limit = .*/memory_limit = '256M'/' /etc/php/5.6/apache2/php.ini && \
-    sed -i 's/upload_max_filesize = .*/upload_max_filesize = '2000M'/' /etc/php/5.6/apache2/php.ini && \
-    sed -i 's/post_max_size = .*/post_max_size = '2000M'/' /etc/php/5.6/apache2/php.ini && \
-    sed -i 's/max_input_time = .*/max_input_time = '-1'/' /etc/php/5.6/apache2/php.ini && \
-    sed -i 's/max_execution_time = .*/max_execution_time = '0'/' /etc/php/5.6/apache2/php.ini && \
+    sed -i 's/memory_limit = .*/memory_limit = '256M'/' /etc/php/7.1/apache2/php.ini && \
+    sed -i 's/upload_max_filesize = .*/upload_max_filesize = '2000M'/' /etc/php/7.1/apache2/php.ini && \
+    sed -i 's/post_max_size = .*/post_max_size = '2000M'/' /etc/php/7.1/apache2/php.ini && \
+    sed -i 's/max_input_time = .*/max_input_time = '-1'/' /etc/php/7.1/apache2/php.ini && \
+    sed -i 's/max_execution_time = .*/max_execution_time = '0'/' /etc/php/7.1/apache2/php.ini && \
     ## Cleanup phase.
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false && \
     apt-get clean && \
@@ -200,14 +200,14 @@ RUN BUILD_DEPS="build-essential \
     ./configure --with-imagick=/usr/local/bin && \
     make && \
     make install && \
-    echo '; configuration for php imagick module \nextension=imagick.so' > /etc/php/5.6/mods-available/imagick.ini && \
+    echo '; configuration for php imagick module \nextension=imagick.so' > /etc/php/7.1/mods-available/imagick.ini && \
     phpenmod imagick && \
     ## Cleanup phase.
     apt-get purge $BUILD_DEPS software-properties-common -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV COMPOSER_HASH=${COMPOSER_HASH:-76a7060ccb93902cd7576b67264ad91c8a2700e2} \    
-    FITS_VERSION=${FITS_VERSION:-1.4.0}
+    FITS_VERSION=${FITS_VERSION:-1.4.1}
 
 ## Let's go!  Finalize all remaining: djatoka, composer, drush, fits.
 RUN useradd --comment 'Islandora User' --no-create-home -d /var/www/html --system --uid $ISLANDORA_UID --user-group -s /bin/bash islandora && \
