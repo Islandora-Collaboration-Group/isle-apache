@@ -207,7 +207,7 @@ RUN BUILD_DEPS="build-essential \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV COMPOSER_HASH=${COMPOSER_HASH:-76a7060ccb93902cd7576b67264ad91c8a2700e2} \    
-    FITS_VERSION=${FITS_VERSION:-1.4.1}
+    FITS_VERSION=${FITS_VERSION:-1.5.0}
 
 ## Let's go!  Finalize all remaining: djatoka, composer, drush, fits.
 RUN useradd --comment 'Islandora User' --no-create-home -d /var/www/html --system --uid $ISLANDORA_UID --user-group -s /bin/bash islandora && \
