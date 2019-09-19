@@ -239,7 +239,7 @@ RUN useradd --comment 'Islandora User' --no-create-home -d /var/www/html --syste
     git clone $ISLE_BUILD_TOOLS_REPO -b $ISLE_BUILD_TOOLS_BRANCH isle_drupal_build_tools && \
     ## Disable Default
     a2dissite 000-default && \
-    a2enmod rewrite deflate headers expires proxy proxy_http proxy_html proxy_connect remoteip xml2enc && \
+    a2enmod rewrite deflate headers expires proxy proxy_http proxy_html proxy_connect remoteip xml2enc cache_disk && \
     ## Cleanup phase.
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false && \
     apt-get clean && \
