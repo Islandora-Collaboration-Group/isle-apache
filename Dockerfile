@@ -164,6 +164,9 @@ RUN BUILD_DEPS="build-essential \
     apt-get install -y --no-install-recommends -o APT::Get::Install-Automatic=true $BUILD_DEPS && \
     # apt-mark auto $BUILD_DEPS software-properties-common && \
     apt-get install -y --no-install-recommends $IMAGEMAGICK_LIBS && \
+    ## WARC TOOLS
+    apt-get install -y --no-install-recommends python3-pip && \
+    pip3 install warctools && \
     ## Adore-Djatoka
     cd /tmp && \
     ## Kakadu libraries from adore-djatoka for JP2 derivatives.
