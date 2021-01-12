@@ -148,6 +148,9 @@ RUN BUILD_DEPS="build-essential \
     libraw-dev \
     librsvg2-dev \
     libtiff-dev \
+    liblcms2-dev \
+    libzstd-dev \
+    libz-dev \
     libwmf-dev \
     libwebp-dev \
     libwmf-dev \
@@ -211,6 +214,7 @@ RUN BUILD_DEPS="build-essential \
 # Composer & FITS ENV
 # @see: Composer https://github.com/composer/getcomposer.org/commits/master replace hash below with most recent hash & FITS https://projects.iq.harvard.edu/fits/downloads
 ENV COMPOSER_HASH=${COMPOSER_HASH:-e3e43bde99447de1c13da5d1027545be81736b27} \
+    COMPOSER_VERSION=${COMPOSER_VERSION:-1.10.19} \
     FITS_VERSION=${FITS_VERSION:-1.5.0}
 
 ## Let's go!  Finalize all remaining: djatoka, composer, drush, fits.
@@ -222,7 +226,7 @@ RUN useradd --comment 'Islandora User' --no-create-home -d /var/www/html --syste
     cd /tmp/build/ && \
     ## COMPOSER
     wget -O composer-setup.php https://raw.githubusercontent.com/composer/getcomposer.org/$COMPOSER_HASH/web/installer && \
-    php composer-setup.php --filename=composer --install-dir=/usr/local/bin && \
+    php composer-setup.php --version=$COMPOSER_VERSION --filename=composer --install-dir=/usr/local/bin && \
     ## DRUSH 8.x as recommended by @g7morris
     mkdir -p /opt/drush-8.x && \
     cd /opt/drush-8.x && \
