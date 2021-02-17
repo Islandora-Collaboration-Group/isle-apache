@@ -1,4 +1,5 @@
-FROM adoptopenjdk/openjdk8:latest
+# @see https://github.com/AdoptOpenJDK/openjdk-docker/blob/master/8/jdk/ubuntu/Dockerfile.hotspot.releases.full
+FROM adoptopenjdk:8-jdk-hotspot
 
 ENV INITRD=no \
     ISLANDORA_UID=${ISLANDORA_UID:-1000} \
@@ -40,7 +41,7 @@ RUN GEN_DEP_PACKS="software-properties-common \
 
 ## S6-Overlay
 # @see: https://github.com/just-containers/s6-overlay
-ENV S6_OVERLAY_VERSION=${S6_OVERLAY_VERSION:-2.1.0.2}
+ENV S6_OVERLAY_VERSION=${S6_OVERLAY_VERSION:-2.2.0.3}
 ADD https://github.com/just-containers/s6-overlay/releases/download/v$S6_OVERLAY_VERSION/s6-overlay-amd64-installer /tmp/
 RUN chmod +x /tmp/s6-overlay-amd64-installer && \
     /tmp/s6-overlay-amd64-installer /
@@ -61,7 +62,7 @@ ENV PATH=$PATH:$HOME/.composer/vendor/bin \
     KAKADU_LIBRARY_PATH=/usr/local/adore-djatoka-1.1/lib/Linux-x86-64 \
     LD_LIBRARY_PATH=/usr/local/adore-djatoka-1.1/lib/Linux-x86-64:/usr/local/lib:$LD_LIBRARY_PATH \
     COMPOSER_ALLOW_SUPERUSER=1 \
-    IMAGEMAGICK_VERSION=${IMAGEMAGICK_VERSION:-7.0.10-51}
+    IMAGEMAGICK_VERSION=${IMAGEMAGICK_VERSION:-7.0.10-62}
 
 ## Apache, PHP, FFMPEG, and other Islandora Depends.
 ## Apache && PHP 7.1 from ondrej PPA
@@ -215,9 +216,10 @@ RUN BUILD_DEPS="build-essential \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Composer & FITS ENV
-# @see: Composer https://github.com/composer/getcomposer.org/commits/master replace hash below with most recent hash & FITS https://projects.iq.harvard.edu/fits/downloads
-ENV COMPOSER_HASH=${COMPOSER_HASH:-e3e43bde99447de1c13da5d1027545be81736b27} \
-    COMPOSER_VERSION=${COMPOSER_VERSION:-1.10.19} \
+# @see: Composer https://github.com/composer/getcomposer.org/commits/master replace hash below with most recent hash also update version too if changed
+# @see: FITS https://projects.iq.harvard.edu/fits/downloads
+ENV COMPOSER_HASH=${COMPOSER_HASH:-fa8ea54c9ba4dc3b13111fb4707f9c3b2d4681f6} \
+    COMPOSER_VERSION=${COMPOSER_VERSION:-1.10.20} \
     FITS_VERSION=${FITS_VERSION:-1.5.0}
 
 ## Let's go!  Finalize all remaining: djatoka, composer, drush, fits.
