@@ -41,7 +41,7 @@ RUN GEN_DEP_PACKS="software-properties-common \
 
 ## S6-Overlay
 # @see: https://github.com/just-containers/s6-overlay
-ENV S6_OVERLAY_VERSION=${S6_OVERLAY_VERSION:-2.2.0.1}
+ENV S6_OVERLAY_VERSION=${S6_OVERLAY_VERSION:-2.2.0.3}
 ADD https://github.com/just-containers/s6-overlay/releases/download/v$S6_OVERLAY_VERSION/s6-overlay-amd64-installer /tmp/
 RUN chmod +x /tmp/s6-overlay-amd64-installer && \
     /tmp/s6-overlay-amd64-installer /
@@ -62,7 +62,7 @@ ENV PATH=$PATH:$HOME/.composer/vendor/bin \
     KAKADU_LIBRARY_PATH=/usr/local/adore-djatoka-1.1/lib/Linux-x86-64 \
     LD_LIBRARY_PATH=/usr/local/adore-djatoka-1.1/lib/Linux-x86-64:/usr/local/lib:$LD_LIBRARY_PATH \
     COMPOSER_ALLOW_SUPERUSER=1 \
-    IMAGEMAGICK_VERSION=${IMAGEMAGICK_VERSION:-7.0.10-61}
+    IMAGEMAGICK_VERSION=${IMAGEMAGICK_VERSION:-7.0.11-0}
 
 ## Apache, PHP, FFMPEG, and other Islandora Depends.
 ## Apache && PHP 7.1 from ondrej PPA
