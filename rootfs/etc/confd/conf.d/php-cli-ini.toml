@@ -1,0 +1,15 @@
+[template]
+src = "php/php.ini.tpl"
+dest = "/etc/php/7.1/apache2/php.ini"
+uid = 0
+gid = 0
+mode = "0644"
+keys = [
+  "/php/cli/max/execution/time",
+  "/php/cli/max/file/uploads"
+  "/php/cli/max/input/time",
+  "/php/cli/max/input/vars",
+  "/php/cli/memory/limit",
+  "/php/cli/post/max/size",
+  "/php/cli/upload/max/filesize"
+]
