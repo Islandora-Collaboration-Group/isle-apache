@@ -2,13 +2,11 @@
 FROM adoptopenjdk:8-jdk-hotspot
 
 ENV INITRD=no \
-    ISLANDORA_UID=${ISLANDORA_UID:-1000} \
+    ISLANDORA_UID=${ISLANDORA_UID:-10000} \
     ENABLE_XDEBUG=${ENABLE_XDEBUG:-false} \
     PULL_ISLE_BUILD_TOOLS=${PULL_ISLE_BUILD_TOOLS:-true} \
-    #ISLE_BUILD_TOOLS_REPO=${ISLE_BUILD_TOOLS_REPO:-https://github.com/Islandora-Collaboration-Group/isle_drupal_build_tools.git} \
-    ISLE_BUILD_TOOLS_REPO=${ISLE_BUILD_TOOLS_REPO:-https://github.com/Born-Digital-US/isle_drupal_build_tools.git} \
-    # ISLE_BUILD_TOOLS_BRANCH=${ISLE_BUILD_TOOLS_BRANCH:-master}
-    ISLE_BUILD_TOOLS_BRANCH=${ISLE_BUILD_TOOLS_BRANCH:-ISLE-v.1.5.5-dev}
+    ISLE_BUILD_TOOLS_REPO=${ISLE_BUILD_TOOLS_REPO:-https://github.com/Islandora-Collaboration-Group/isle_drupal_build_tools.git} \
+    ISLE_BUILD_TOOLS_BRANCH=${ISLE_BUILD_TOOLS_BRANCH:-master}
     ## @TODO: add GH creds to container for private repo pulls.
 
 ## General Dependencies
@@ -251,7 +249,6 @@ RUN useradd --comment 'Islandora User' --no-create-home -d /var/www/html --syste
     sed -ie 's/<tool class="edu\.harvard\.hul\.ois\.fits\.tools\.tika\.TikaTool" exclude-exts="jar,avi,mov,mpg,mpeg,mkv,mp4,mpeg4,m2ts,mxf,ogv,mj2,divx,dv,m4v,m2v,ismv" classpath-dirs="lib\/tika"\/>/<!-- & -->/' /usr/local/fits/xml/fits.xml && \    
     ## BUILD TOOLS
     mkdir /utility-scripts && \
-    cd /utility-scripts && \
     git clone $ISLE_BUILD_TOOLS_REPO -b $ISLE_BUILD_TOOLS_BRANCH isle_drupal_build_tools && \
     ## Disable Default
     a2dissite 000-default && \
