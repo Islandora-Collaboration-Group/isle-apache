@@ -29,7 +29,7 @@ Contains and Includes:
 * `cron` and `tmpreaper` to clean /tmp
 * (_optional_) Demo Kakadu JP2 library and binaries as made available by the AdoreDjatoka project. **NOTE**: you will need to purchase a Kakadu license if you intend to use these binaries in production.
 
-## Loading the ISLE.localdomain Islandora instance ('quickstart')
+## Loading the isle-demo.localdomain Islandora instance ('quickstart')
 
 * To install the current version of Islandora along with a local Drupal website...
   * `docker exec -it isle-apache-demo bash /utility-scripts/isle_drupal_build_tools/isle_islandora_installer.sh`
