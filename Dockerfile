@@ -249,6 +249,7 @@ RUN useradd --comment 'Islandora User' --no-create-home -d /var/www/html --syste
     sed -ie 's/<tool class="edu\.harvard\.hul\.ois\.fits\.tools\.tika\.TikaTool" exclude-exts="jar,avi,mov,mpg,mpeg,mkv,mp4,mpeg4,m2ts,mxf,ogv,mj2,divx,dv,m4v,m2v,ismv" classpath-dirs="lib\/tika"\/>/<!-- & -->/' /usr/local/fits/xml/fits.xml && \    
     ## BUILD TOOLS
     mkdir /utility-scripts && \
+    cd /utility-scripts && \
     git clone $ISLE_BUILD_TOOLS_REPO -b $ISLE_BUILD_TOOLS_BRANCH isle_drupal_build_tools && \
     ## Disable Default
     a2dissite 000-default && \
