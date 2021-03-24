@@ -29,16 +29,16 @@ Contains and Includes:
 * `cron` and `tmpreaper` to clean /tmp
 * (_optional_) Demo Kakadu JP2 library and binaries as made available by the AdoreDjatoka project. **NOTE**: you will need to purchase a Kakadu license if you intend to use these binaries in production.
 
-## Loading the isle-demo.localdomain Islandora instance ('quickstart')
+## Loading the ISLE.localdomain Islandora instance ('quickstart')
 
 * To install the current version of Islandora along with a local Drupal website...
-  * `docker exec -it isle-apache-demo bash /utility-scripts/isle_drupal_build_tools/isle_islandora_installer.sh`
+  * `docker exec -it isle-apache-ld bash /utility-scripts/isle_drupal_build_tools/isle_islandora_installer.sh`
 
 ## Environmental Variables Available
 
-* `ISLANDORA_UID = 10000` (default)
+* `ISLANDORA_UID = 1000` (default)
   * Match the Islandora UID to the user id of the user on the host system responsible for Islandora's webroot.
-  * Most distros use UID 1000 for the primary user, so to avoid issues `10000` is used instead for the demo.
+  * Most distros use UID 1000 for the primary user, so it is the default.
   * Please note you are free to change this as you need.
   * **If you are experiencing permission issues on the host when editing your webroot `id -u` to get the appropriate UID to set.**
 
