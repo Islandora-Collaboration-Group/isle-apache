@@ -6,7 +6,7 @@ gid = 0
 mode = "0644"
 keys = [
   "/php/cli/max/execution/time",
-  "/php/cli/max/file/uploads"
+  "/php/cli/max/file/uploads",
   "/php/cli/max/input/time",
   "/php/cli/max/input/vars",
   "/php/cli/memory/limit",

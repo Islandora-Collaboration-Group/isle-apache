@@ -4,9 +4,9 @@ FROM adoptopenjdk:8-jdk-hotspot
 ENV INITRD=no \
     ISLANDORA_UID=${ISLANDORA_UID:-10000} \
     ENABLE_XDEBUG=${ENABLE_XDEBUG:-false} \
-    PULL_ISLE_BUILD_TOOLS=${PULL_ISLE_BUILD_TOOLS:-true} \
+    PULL_ISLE_BUILD_TOOLS=${PULL_ISLE_BUILD_TOOLS:-false} \
     ISLE_BUILD_TOOLS_REPO=${ISLE_BUILD_TOOLS_REPO:-https://github.com/Islandora-Collaboration-Group/isle_drupal_build_tools.git} \
-    ISLE_BUILD_TOOLS_BRANCH=${ISLE_BUILD_TOOLS_BRANCH:-master}
+    ISLE_BUILD_TOOLS_BRANCH=${ISLE_BUILD_TOOLS_BRANCH:-ISLE-v.1.5.5-dev}
     ## @TODO: add GH creds to container for private repo pulls.
 
 ## General Dependencies

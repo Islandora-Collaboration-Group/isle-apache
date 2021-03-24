@@ -6,7 +6,7 @@ gid = 0
 mode = "0644"
 keys = [
   "/php/max/execution/time",
-  "/php/max/file/uploads"
+  "/php/max/file/uploads",
   "/php/max/input/time",
   "/php/max/input/vars",
   "/php/memory/limit",
