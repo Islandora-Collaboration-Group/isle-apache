@@ -21,7 +21,7 @@ Contains and Includes:
   - POR
   - RUS
   - SPA 
-* [ImageMagick 7](https://www.imagemagick.org/)
+* [ImageMagick 7.x](https://www.imagemagick.org/)
   - Features: Cipher DPC HDRI OpenMP
   - Delegates (built-in): bzlib djvu mpeg fontconfig freetype jbig jng jpeg lcms lqr lzma openexr openjp2 png ps raw rsvg tiff webp wmf x zlib
 * [File Information Tool Set (FITS)](https://projects.iq.harvard.edu/fits/home)
@@ -39,6 +39,7 @@ Contains and Includes:
 * `ISLANDORA_UID = 1000` (default)
   * Match the Islandora UID to the user id of the user on the host system responsible for Islandora's webroot.
   * Most distros use UID 1000 for the primary user, so it is the default.
+  * Please note you are free to change this as you need.
   * **If you are experiencing permission issues on the host when editing your webroot `id -u` to get the appropriate UID to set.**
 
 * `ENABLE_XDEBUG = false` (default) | true
