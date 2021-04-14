@@ -1,5 +1,5 @@
 [template]
-src = "php/php.ini.tpl"
+src = "php/cli.php.ini.tpl"
 dest = "/etc/php/7.1/cli/php.ini"
 uid = 0
 gid = 0
