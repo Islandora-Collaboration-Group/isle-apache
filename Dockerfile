@@ -62,7 +62,8 @@ ENV PATH=$PATH:$HOME/.composer/vendor/bin \
     KAKADU_LIBRARY_PATH=/usr/local/adore-djatoka-1.1/lib/Linux-x86-64 \
     LD_LIBRARY_PATH=/usr/local/adore-djatoka-1.1/lib/Linux-x86-64:/usr/local/lib:$LD_LIBRARY_PATH \
     COMPOSER_ALLOW_SUPERUSER=1 \
-    IMAGEMAGICK_VERSION=${IMAGEMAGICK_VERSION:-7.0.11-6}
+    IMAGEMAGICK_VERSION=${IMAGEMAGICK_VERSION:-7.0.11-13} \
+    OPENJPEG_VERSION=${OPENJPEG_VERSION:-v2.4.0}
 
 ## Apache, PHP, FFMPEG, and other Islandora Depends.
 ## Apache && PHP 7.1 from ondrej PPA
@@ -184,7 +185,7 @@ RUN BUILD_DEPS="build-essential \
     rm -rf *.bat Solaris-Sparc Solaris-Sparcv9 Solaris-x86 Win32 ../dist/adore-djatoka.war && \
     ## OpenJPEG 2000
     cd /tmp && \
-    git clone https://github.com/uclouvain/openjpeg && \
+    git clone -b $OPENJPEG_VERSION https://github.com/uclouvain/openjpeg && \
     cd openjpeg && \
     mkdir build && cd build && \
     cmake .. -DCMAKE_BUILD_TYPE=Release && \
@@ -218,8 +219,8 @@ RUN BUILD_DEPS="build-essential \
 # Composer & FITS ENV
 # @see: Composer https://github.com/composer/getcomposer.org/commits/master replace hash below with most recent hash also update version too if changed
 # @see: FITS https://projects.iq.harvard.edu/fits/downloads
-ENV COMPOSER_HASH=${COMPOSER_HASH:-b3a97c79a408cb7f36da93368df27f77e69fc169} \
-    COMPOSER_VERSION=${COMPOSER_VERSION:-1.10.21} \
+ENV COMPOSER_HASH=${COMPOSER_HASH:-885ece8a6e1370b204b89b7a542169d25aa21177} \
+    COMPOSER_VERSION=${COMPOSER_VERSION:-1.10.22} \
     FITS_VERSION=${FITS_VERSION:-1.5.0}
 
 ## Let's go!  Finalize all remaining: djatoka, composer, drush, fits.
