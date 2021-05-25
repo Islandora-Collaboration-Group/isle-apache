@@ -63,7 +63,7 @@ ENV PATH=$PATH:$HOME/.composer/vendor/bin \
     LD_LIBRARY_PATH=/usr/local/adore-djatoka-1.1/lib/Linux-x86-64:/usr/local/lib:$LD_LIBRARY_PATH \
     COMPOSER_ALLOW_SUPERUSER=1 \
     IMAGEMAGICK_VERSION=${IMAGEMAGICK_VERSION:-7.0.11-13} \
-    OPENJPEG_VERSION=${OPENJPEG_VERSION:-v2.4.0} \
+    OPENJPEG_VERSION=${OPENJPEG_VERSION:-v2.4.0}
 
 ## Apache, PHP, FFMPEG, and other Islandora Depends.
 ## Apache && PHP 7.1 from ondrej PPA
